@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import sklearn.linear_model
+import sklearn.neighbors
 
 LIFESAT_DATA_PATH = pathlib.Path(__file__).parent.parent.joinpath('datasets').joinpath('lifesat')
 OECD_DATA_PATH = LIFESAT_DATA_PATH.joinpath('oecd_bli_2015.csv')
@@ -48,4 +49,10 @@ model.fit(X, y)
 
 # Make a prediction for Cyprus
 X_new = [[22587]]  # Cyprus GDP per capita
-print(model.predict(X_new))
+print(f'Linear Model: {model.predict(X_new)}')
+
+
+# KNR example
+knr_model = sklearn.neighbors.KNeighborsRegressor(n_neighbors=3)
+knr_model.fit(X, y)
+print(f'KNR Model: {knr_model.predict(X_new)}')

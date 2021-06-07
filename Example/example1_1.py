@@ -19,7 +19,7 @@ gdp_per_capita = pd.read_csv(GDP_DATA_PATH, thousands=',', delimiter='\t', encod
 
 # Helper function
 def prepare_country_stats(oecd_bli, gdp_per_capita):
-    oecd_bli = oecd_bli[oecd_bli["INEQUALITY"]=="TOT"]
+    oecd_bli = oecd_bli[oecd_bli["INEQUALITY"] == "TOT"]
     oecd_bli = oecd_bli.pivot(index="Country", columns="Indicator", values="Value")
     gdp_per_capita.rename(columns={"2015": "GDP per capita"}, inplace=True)
     gdp_per_capita.set_index("Country", inplace=True)
